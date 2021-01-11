@@ -1,0 +1,75 @@
+<div class="container">
+    <header>
+        <h2>{{detail.title}}</h2>
+    </header>
+    <section class="p-3">
+        <div class="row">
+            <div class="col-6 d-flex justify-content-center">
+                <img src="{{detail.thumbnail.path}}/portrait_uncanny.jpg" alt="{{detail.title}}" class="img-fluid">
+            </div>
+            <div class="col-6">
+                <div>
+                    <p>{{detail.title}}</p>
+                    <h4>Quantidade</h4>
+                    <form class="form-inline">
+                        <input type="number" class="form-control" name="qtde" id="qtde" min="1" value="1">
+                        <button class="btn btn-success ml-2">
+                            <i class="icofont-ui-add"></i>
+                            Adicionar
+                        </button>
+                    </form>
+
+                    <div class="mt-3">
+                        <h3>{{detail.prices[0].price | currency:'BRL':'symbol'}}</h3>
+                        <p><i class="icofont-credit-card"></i> Aceitamos todos os cartões</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row m-3">
+            <div class="col-12">
+                <div>
+                    <div class="accordion" id="accordionExample">
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block text-left" type="button"
+                                        data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                                        aria-controls="collapseOne">
+                                        Mais informações sobre este produto:
+                                    </button>
+                                </h2>
+                            </div>
+
+                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                                data-parent="#accordionExample">
+                                <div class="card-body">
+                                    {{detail.description}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block text-left" type="button"
+                                        data-toggle="collapse" data-target="#collapseCreators" aria-expanded="true"
+                                        aria-controls="collapseOne">
+                                        Criadores:
+                                    </button>
+                                </h2>
+                            </div>
+
+                            <div id="collapseCreators" class="collapse" aria-labelledby="headingOne"
+                                data-parent="#accordionExample" *ngIf="detail.creators.items">
+                                <div class="card-body">
+                                    {{detail.creators.items[0].name}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,16 @@
+<div class="card-deck">
+    <div class="col-md-3 mb-4" *ngFor="let comic of comics">
+        <div class="card h-100" [class.rare]="comic.rare">
+            <img src="{{comic.thumbnail.path}}/portrait_xlarge.jpg" class="card-img-top" alt="{{comic.title}}">
+            <div class="card-body text-center">
+                <h5 class="card-title">{{comic.title}}</h5>
+                <p class="card-text">{{comic.prices[0].price | currency:'BRL':'symbol'}}</p>
+            </div>
+            <div class="card-footer">
+                <p class="card-text d-flex justify-content-between align-items-center">
+                    <app-button [comic]="comic" (adicionar)="adicionado($event)"></app-button>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

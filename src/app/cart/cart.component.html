@@ -1,0 +1,31 @@
+<div class="container">
+    <h2>Carrinho</h2>
+    <table class="table">
+        <tbody>
+            <tr *ngFor="let item of itens">
+                <td>
+                    <img src="{{item.thumbnail.path}}/portrait_small.jpg" alt="{{item.title}}">
+                </td>
+                <td>{{item.title}}</td>
+                <td>{{item.prices[0].price | currency:'BRL':'symbol'}}</td>
+                <td>
+                    <button type="button" class="btn btn-sm btn-danger" (click)="removeItemCart(item)">
+                        <i class="icofont-trash"></i>
+                    </button>
+                </td>
+            </tr>
+            <tr class="text-center">
+                <td colspan="4" *ngIf="itens.length == 0">Carrinho vazio.</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4" class="text-right">
+                    <h4>Desconto: R$ 0,00</h4>
+                    <h3>Total: {{calcTotalCart() | currency:'BRL':'symbol'}}</h3>
+                    <button class="btn btn-success">Finalizar</button>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
